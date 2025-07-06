@@ -41,9 +41,43 @@
     <div class="container">
       <div class="row">
         <div class="intro-text">
-          <h1>Hi！我是Nick，会点前端的UI设计师！</h1>
+          <h1><span class="gradient-text" style="text-shadow: none;" id="prefix">Hey&nbsp</span><span id="typed"></span></h1>
+
+ <script>
+    const roles = ["I'm Nick.", "UI Designer."];
+    const prefix = "Hey";
+    const typedEl = document.getElementById("typed");
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      const currentRole = roles[roleIndex];
+      if (!isDeleting) {
+        typedEl.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentRole.length) {
+          isDeleting = true;
+          setTimeout(typeLoop, 2500); // 停顿后再删
+          return;
+        }
+      } else {
+        typedEl.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      setTimeout(typeLoop, isDeleting ? 100 : 200);
+    }
+
+    typeLoop();
+  </script>
+
           <hr>
-          <p>B端设计 • APP设计 • 数据可视化 • 插画</p>
+          <p>B端设计 • APP设计 • 数据可视化 • HMI • 小程序 • 插画</p>
           <a href="#about" class="btn btn-default btn-lg page-scroll">了解更多</a> </div>
       </div>
     </div>
@@ -75,15 +109,40 @@
   <div class="container">
     <div class="section-title text-center center">
       <h2>关于我</h2>
-      <hr>
+      <hr style="background-color: #fff;">
     </div>
     <div class="row">
-      <div class="col-md-12 text-center"><img src="img/about.png" class="img-responsive"></div>
+      <div class="col-md-12 text-center"><img src="img/Avatar.gif" class="img-responsive"></div>
       <div class="col-md-8 col-md-offset-2">
         <div class="about-text">
           <p>大家好，我是Nick，是一名UI设计师，具备5年设计经验。我熟悉产品从需求到落地的完整设计流程，擅长根据用户场景输出高保真界面与交互方案。</p>
           <p>过往项目中，我负责过B端系统、移动App、小程序等多个设计方向，也参与过前后端协同与组件规范建设。在设计中我注重逻辑性和可执行性，希望不断提升自己的设计判断力和产品思维。</p>
-          <a href="#portfolio" class="btn btn-default btn-lg page-scroll">我的作品</a> </div>
+          
+          <h2 class="section-title">工作经验</h2>
+
+<div class="experience-item">
+  <div class="job-title">UI设计主管</div>
+  <div class="company">第伍要素（上海）数据科技有限公司</div>
+  <div class="date-range">2022 年 1 月 至今</div>
+  <ul class="responsibilities">
+    <li>设计产品界面（Web、App、小程序、后台管理等）的视觉样式；</li>
+    <li>输出高保真视觉稿，包括页面布局、配色、字体、图标、组件样式等；</li>
+    <li>制定和维护 UI 设计规范、组件库、色彩体系、排版系统，提高产品视觉一致性和易用性。</li>
+  </ul>
+</div>
+<hr>
+<div class="experience-item">
+  <div class="job-title">UI设计</div>
+  <div class="company">邦程（上海）科技发展有限公司</div>
+  <div class="date-range">2020 年 4 月 – 2021 年 12 月</div>
+  <ul class="responsibilities">
+    <li>负责部分品牌视觉设计，如登录页、官网、海报、活动页等；</li>
+    <li>负责将产品需求转化为可视化界面，提升用户体验与品牌感知，并通过设计规范协助团队高效协同；</li>
+    <li>保证视觉风格与产品一致，塑造统一的品牌形象。</li>
+  </ul>
+</div>
+
+          <a href="#portfolio" class="btn btn-default btn-lg page-scroll " style="color: #555; border: 1px solid #222; text-decoration: none;">我的作品</a> </div>
       </div>
       
     </div>
@@ -94,7 +153,7 @@
   <div class="container">
     <div class="section-title text-center center">
       <h2>作品</h2>
-      <hr>
+      <hr style="background-color: #222;">
     </div>
     <div class="categories">
       <ul class="cat">
@@ -102,8 +161,9 @@
           <ol class="type">
             <li><a href="#" data-filter="*" class="active">全部</a></li>
             <li><a href="#" data-filter=".graphic">B端设计</a></li>
-            <li><a href="#" data-filter=".illustration">数据可视化</a></li>
-            <li><a href="#" data-filter=".photography">插画</a></li>
+            <li><a href="#" data-filter=".visualization">数据可视化</a></li>
+            <li><a href="#" data-filter=".application">APP/小程序</a></li>
+            <li><a href="#" data-filter=".illustration">插画</a></li>
           </ol>
         </li>
       </ul>
@@ -113,16 +173,27 @@
       <div class="portfolio-items">
         <div class="col-sm-6 col-md-3 col-lg-3 graphic">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="details.html" title="融资管理大屏" data-lightbox-gallery="gallery1">
               <div class="hover-text">
-                <h4>Project Title</h4>
+                <h4>融资管理大屏</h4>
               </div>
-              <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="img/portfolio/14-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 illustration">
+
+        <div class="col-sm-6 col-md-3 col-lg-3 application">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/13-large.jpg" title="小程序设计" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>小程序设计</h4>
+              </div>
+              <img src="img/portfolio/13-small.png" class="img-responsive" alt="Project Title"> </a> </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 col-lg-3 visualization">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/02-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
@@ -131,7 +202,7 @@
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 graphic">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/03-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
@@ -140,7 +211,7 @@
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 graphic">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/04-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
@@ -149,16 +220,16 @@
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 illustration">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/05-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
               <img src="img/portfolio/05-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 photography">
+        <div class="col-sm-6 col-md-3 col-lg-3 visualization">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/06-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
@@ -167,7 +238,7 @@
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 photography">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/07-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
@@ -176,43 +247,43 @@
         </div>
         <div class="col-sm-6 col-md-3 col-lg-3 graphic">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/08-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
               <img src="img/portfolio/08-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 illustration">
+        <div class="col-sm-6 col-md-3 col-lg-3 visualization">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/09-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
               <img src="img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 photography">
+        <div class="col-sm-6 col-md-3 col-lg-3 illustration">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/10-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
               <img src="img/portfolio/10-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 photography">
+        <div class="col-sm-6 col-md-3 col-lg-3 illustration">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/11-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
               <img src="img/portfolio/11-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 graphic">
+        <div class="col-sm-6 col-md-3 col-lg-3 application">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="details.html" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="img/portfolio/12-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Project Title</h4>
               </div>
@@ -228,7 +299,7 @@
   <div class="container">
     <div class="section-title center">
       <h2>联系我</h2>
-      <hr>
+      <hr style="background-color: #222;">
     </div>
     <div class="col-md-8 col-md-offset-2">
       <div>
